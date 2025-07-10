@@ -57,7 +57,7 @@ const Navbar = () => {
                   Sign in
                 </a>
                 <button className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:shadow-lg whitespace-nowrap">
-                  Sign up free
+                  Join Waitlist
                 </button>
               </div>
           </div>
@@ -92,7 +92,7 @@ const Navbar = () => {
                   Sign in
                 </a>
                 <button className="bg-green-600 hover:bg-green-700 text-white w-full py-2.5 rounded-lg font-semibold">
-                  Sign up free
+                  Join Waitlist
                 </button>
               </div>
             </div>
