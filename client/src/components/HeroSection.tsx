@@ -3,247 +3,247 @@ import { MessageCircle, Zap, Moon, Coffee, ArrowRight, Notebook, StickyNote as S
 
 const HeroSection = () => {
     return (
-        <section className="px-6 py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
+        <section className="px-4 sm:px-6 py-12 sm:py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto">
           {/* Main Heading */}
-          <div className="text-center max-w-5xl mx-auto mb-16">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gray-900 leading-tight mb-8 tracking-tight">
+          <div className="text-center max-w-5xl mx-auto mb-12 sm:mb-16">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-gray-900 leading-tight mb-6 sm:mb-8 tracking-tight">
               Your productivity has
               <br />
               <span className="relative">
                 <span className="relative z-10">a root cause.</span>
-                <span className="absolute bottom-2 left-0 w-full h-3 bg-yellow-300 -rotate-1"></span>
+                <span className="absolute bottom-1 sm:bottom-2 left-0 w-full h-2 sm:h-3 bg-yellow-300 -rotate-1"></span>
               </span>
               <br />
-              <span className="block mt-4 text-gray-900">
+              <span className="block mt-2 sm:mt-4 text-gray-900">
                 Our job is to find it.
               </span>
             </h1>
           </div>
 
           {/* Enhanced Illustration */}
-          <div className="relative mb-20">
+          <div className="relative mb-16 sm:mb-20">
             {/* Improved Cloud background */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-[900px] h-[500px] bg-gradient-to-br from-blue-100 via-green-50 to-purple-50 rounded-full opacity-60 blur-3xl animate-pulse"></div>
+              <div className="w-full max-w-[900px] h-[300px] sm:h-[400px] md:h-[500px] bg-gradient-to-br from-blue-100 via-green-50 to-purple-50 rounded-full opacity-60 blur-3xl animate-pulse"></div>
             </div>
             
             {/* Main illustration container with subtle float animation */}
-            <div className="relative w-full max-w-5xl h-[500px] mx-auto flex items-center justify-center animate-float">
+            <div className="relative w-full max-w-5xl h-[300px] sm:h-[400px] md:h-[500px] mx-auto flex items-center justify-center animate-float">
               {/* Productivity app icons that focus on symptoms not root causes */}
               
               {/* Notion - Top */}
-              <div className="absolute top-16 left-1/2 transform -translate-x-1/2 rotate-3 transition-transform hover:scale-110 duration-300 z-10">
-                <div className="bg-white rounded-2xl shadow-lg p-4 w-20 h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
-                  <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-                    <span className="text-white text-base font-bold">N</span>
+              <div className="absolute top-8 sm:top-16 left-1/2 transform -translate-x-1/2 rotate-3 transition-transform hover:scale-110 duration-300 z-10">
+                <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-black rounded-lg flex items-center justify-center">
+                    <span className="text-white text-xs sm:text-sm md:text-base font-bold">N</span>
                   </div>
                 </div>
               </div>
               
               {/* Todoist - Top Right */}
-              <div className="absolute top-20 right-20 transform -rotate-6 transition-transform hover:scale-110 duration-300 z-10">
-                <div className="bg-white rounded-2xl shadow-lg p-4 w-20 h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
-                  <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
-                    <CheckSquare className="h-5 w-5 text-white" />
+              <div className="absolute top-10 sm:top-20 right-8 sm:right-20 transform -rotate-6 transition-transform hover:scale-110 duration-300 z-10">
+                <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-red-500 rounded-lg flex items-center justify-center">
+                    <CheckSquare className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white" />
                   </div>
                 </div>
               </div>
               
               {/* RescueTime - Right */}
-              <div className="absolute top-1/2 right-16 transform -translate-y-1/2 rotate-8 transition-transform hover:scale-110 duration-300 z-10">
-                <div className="bg-white rounded-2xl shadow-lg p-4 w-20 h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
-                  <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
-                    <BarChart3 className="h-5 w-5 text-white" />
+              <div className="absolute top-1/2 right-8 sm:right-16 transform -translate-y-1/2 rotate-8 transition-transform hover:scale-110 duration-300 z-10">
+                <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-orange-500 rounded-lg flex items-center justify-center">
+                    <BarChart3 className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white" />
                   </div>
                 </div>
               </div>
               
               {/* Focus Apps - Bottom Right */}
-              <div className="absolute bottom-20 right-20 transform -rotate-12 transition-transform hover:scale-110 duration-300 z-10">
-                <div className="bg-white rounded-2xl shadow-lg p-4 w-20 h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
-                  <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-                    <Target className="h-5 w-5 text-white" />
+              <div className="absolute bottom-10 sm:bottom-20 right-8 sm:right-20 transform -rotate-12 transition-transform hover:scale-110 duration-300 z-10">
+                <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                    <Target className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white" />
                   </div>
                 </div>
               </div>
               
               {/* Trello - Bottom */}
-              <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 -rotate-3 transition-transform hover:scale-110 duration-300 z-10">
-                <div className="bg-white rounded-2xl shadow-lg p-4 w-20 h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
-                  <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <Layers className="h-5 w-5 text-white" />
+              <div className="absolute bottom-8 sm:bottom-16 left-1/2 transform -translate-x-1/2 -rotate-3 transition-transform hover:scale-110 duration-300 z-10">
+                <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <Layers className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white" />
                   </div>
                 </div>
               </div>
               
               {/* Google Keep - Bottom Left */}
-              <div className="absolute bottom-20 left-20 transform rotate-6 transition-transform hover:scale-110 duration-300 z-10">
-                <div className="bg-white rounded-2xl shadow-lg p-4 w-20 h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
-                  <div className="w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
-                    <Sticky className="h-5 w-5 text-white" />
+              <div className="absolute bottom-10 sm:bottom-20 left-8 sm:left-20 transform rotate-6 transition-transform hover:scale-110 duration-300 z-10">
+                <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
+                    <Sticky className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white" />
                   </div>
                 </div>
               </div>
               
               {/* Evernote - Left */}
-              <div className="absolute top-1/2 left-16 transform -translate-y-1/2 -rotate-8 transition-transform hover:scale-110 duration-300 z-10">
-                <div className="bg-white rounded-2xl shadow-lg p-4 w-20 h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
-                  <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
-                    <FileText className="h-5 w-5 text-white" />
+              <div className="absolute top-1/2 left-8 sm:left-16 transform -translate-y-1/2 -rotate-8 transition-transform hover:scale-110 duration-300 z-10">
+                <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                    <FileText className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white" />
                   </div>
                 </div>
               </div>
               
               {/* Apple Notes - Top Left */}
-              <div className="absolute top-20 left-20 transform rotate-12 transition-transform hover:scale-110 duration-300 z-10">
-                <div className="bg-white rounded-2xl shadow-lg p-4 w-20 h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
-                  <div className="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center">
-                    <Notebook className="h-5 w-5 text-white" />
+              <div className="absolute top-10 sm:top-20 left-8 sm:left-20 transform rotate-12 transition-transform hover:scale-110 duration-300 z-10">
+                <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-yellow-400 rounded-lg flex items-center justify-center">
+                    <Notebook className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white" />
                   </div>
                 </div>
               </div>
 
               {/* Clockify - Additional time tracking */}
-              <div className="absolute top-12 left-1/3 transform rotate-15 transition-transform hover:scale-110 duration-300 z-10">
-                <div className="bg-white rounded-2xl shadow-lg p-4 w-20 h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
-                  <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                    <Clock className="h-5 w-5 text-white" />
+              <div className="absolute top-6 sm:top-12 left-1/3 transform rotate-15 transition-transform hover:scale-110 duration-300 z-10">
+                <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                    <Clock className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white" />
                   </div>
                 </div>
               </div>
 
               {/* Calendar Apps - Scheduling */}
-              <div className="absolute top-12 right-1/3 transform -rotate-15 transition-transform hover:scale-110 duration-300 z-10">
-                <div className="bg-white rounded-2xl shadow-lg p-4 w-20 h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
-                  <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
-                    <Calendar className="h-5 w-5 text-white" />
+              <div className="absolute top-6 sm:top-12 right-1/3 transform -rotate-15 transition-transform hover:scale-110 duration-300 z-10">
+                <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-purple-500 rounded-lg flex items-center justify-center">
+                    <Calendar className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white" />
                   </div>
                 </div>
               </div>
 
               {/* Pomodoro Timer Apps */}
-              <div className="absolute bottom-12 left-1/3 transform -rotate-9 transition-transform hover:scale-110 duration-300 z-10">
-                <div className="bg-white rounded-2xl shadow-lg p-4 w-20 h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
-                  <div className="w-8 h-8 bg-red-400 rounded-lg flex items-center justify-center">
-                    <Timer className="h-5 w-5 text-white" />
+              <div className="absolute bottom-6 sm:bottom-12 left-1/3 transform -rotate-9 transition-transform hover:scale-110 duration-300 z-10">
+                <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-red-400 rounded-lg flex items-center justify-center">
+                    <Timer className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white" />
                   </div>
                 </div>
               </div>
 
               {/* Obsidian - Knowledge management */}
-              <div className="absolute bottom-12 right-1/3 transform rotate-9 transition-transform hover:scale-110 duration-300 z-10">
-                <div className="bg-white rounded-2xl shadow-lg p-4 w-20 h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
-                  <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                    <Brain className="h-5 w-5 text-white" />
+              <div className="absolute bottom-6 sm:bottom-12 right-1/3 transform rotate-9 transition-transform hover:scale-110 duration-300 z-10">
+                <div className="bg-white rounded-2xl shadow-lg p-2 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center border-2 border-gray-100 hover:border-black/10">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                    <Brain className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white" />
                   </div>
                 </div>
               </div>
 
               {/* Centered and Enhanced X crossing out the symptoms */}
               <div className="absolute inset-0 flex items-center justify-center z-20">
-                <div className="relative w-[500px] h-[500px] flex items-center justify-center">
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-4 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rotate-45 rounded-full shadow-2xl animate-pulse"></div>
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-4 bg-gradient-to-r from-red-600 via-red-700 to-red-600 -rotate-45 rounded-full shadow-2xl animate-pulse"></div>
+                <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] flex items-center justify-center">
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-2 sm:h-3 md:h-4 bg-gradient-to-r from-red-500 via-red-600 to-red-500 rotate-45 rounded-full shadow-2xl animate-pulse"></div>
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-2 sm:h-3 md:h-4 bg-gradient-to-r from-red-600 via-red-700 to-red-600 -rotate-45 rounded-full shadow-2xl animate-pulse"></div>
                   {/* Add glow effect */}
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-4 bg-red-400 rotate-45 rounded-full blur-sm opacity-50"></div>
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-4 bg-red-400 -rotate-45 rounded-full blur-sm opacity-50"></div>
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-2 sm:h-3 md:h-4 bg-red-400 rotate-45 rounded-full blur-sm opacity-50"></div>
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-2 sm:h-3 md:h-4 bg-red-400 -rotate-45 rounded-full blur-sm opacity-50"></div>
                 </div>
               </div>
 
               {/* Enhanced speech bubbles with clear messaging that these tools don't work */}
-              <div className="absolute top-4 left-8 animate-bounce-slow z-30">
+              <div className="absolute top-2 sm:top-4 left-4 sm:left-8 animate-bounce-slow z-30 hidden sm:block">
                 <div className="flex items-center space-x-2">
-                  <div className="w-14 h-14 bg-gradient-to-br from-amber-200 to-amber-300 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
-                    <span className="text-xl">😰</span>
+                  <div className="w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-br from-amber-200 to-amber-300 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
+                    <span className="text-lg sm:text-xl">😰</span>
                   </div>
-                  <div className="bg-white px-4 py-3 rounded-2xl shadow-xl border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
-                    <div className="absolute -left-2 top-4 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-gray-900"></div>
-                    <p className="text-sm font-bold text-gray-900 whitespace-nowrap">I know what I did, but not why I did it.</p>
+                  <div className="bg-white px-3 sm:px-4 py-2 sm:py-3 rounded-2xl shadow-xl border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
+                    <div className="absolute -left-2 top-3 sm:top-4 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-gray-900"></div>
+                    <p className="text-xs sm:text-sm font-bold text-gray-900 whitespace-nowrap">I know what I did, but not why I did it.</p>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute top-8 right-6 animate-bounce-slow z-30">
+              <div className="absolute top-4 sm:top-8 right-3 sm:right-6 animate-bounce-slow z-30 hidden sm:block">
                 <div className="flex items-center space-x-2">
-                  <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
-                    <div className="absolute -right-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-white"></div>
+                  <div className="bg-white px-2 sm:px-3 py-1 sm:py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
+                    <div className="absolute -right-2 top-2 sm:top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-white"></div>
                     <p className="text-xs font-bold text-gray-900 whitespace-nowrap">My to-do list grows, but my energy shrinks.</p>
                   </div>
-                  <div className="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-lg">😤</span>
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-blue-200 rounded-full flex items-center justify-center shadow-md">
+                    <span className="text-sm sm:text-lg">😤</span>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute bottom-8 left-12 animate-bounce-slow z-30">
+              <div className="absolute bottom-4 sm:bottom-8 left-6 sm:left-12 animate-bounce-slow z-30 hidden sm:block">
                 <div className="flex items-center space-x-2">
-                  <div className="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-lg">😫</span>
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-green-200 rounded-full flex items-center justify-center shadow-md">
+                    <span className="text-sm sm:text-lg">😫</span>
                   </div>
-                  <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
-                    <div className="absolute -left-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-white"></div>
-                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">I’m tracking everything, but nothing’s changing.</p>
+                  <div className="bg-white px-2 sm:px-3 py-1 sm:py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
+                    <div className="absolute -left-2 top-2 sm:top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-white"></div>
+                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">I'm tracking everything, but nothing's changing.</p>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute bottom-4 right-8 animate-bounce-slow z-30">
+              <div className="absolute bottom-2 sm:bottom-4 right-4 sm:right-8 animate-bounce-slow z-30 hidden sm:block">
                 <div className="flex items-center space-x-2">
-                  <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
-                    <div className="absolute -right-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-white"></div>
-                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">Timers don’t fix my burnout.</p>
+                  <div className="bg-white px-2 sm:px-3 py-1 sm:py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
+                    <div className="absolute -right-2 top-2 sm:top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-white"></div>
+                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">Timers don't fix my burnout.</p>
                   </div>
-                  <div className="w-12 h-12 bg-red-200 rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-lg">😩</span>
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-red-200 rounded-full flex items-center justify-center shadow-md">
+                    <span className="text-sm sm:text-lg">😩</span>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute top-1/2 left-4 transform -translate-y-1/2 animate-bounce-slow z-30">
+              <div className="absolute top-1/2 left-2 sm:left-4 transform -translate-y-1/2 animate-bounce-slow z-30 hidden sm:block">
                 <div className="flex items-center space-x-2">
-                  <div className="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-lg">🤔</span>
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-purple-200 rounded-full flex items-center justify-center shadow-md">
+                    <span className="text-sm sm:text-lg">🤔</span>
                   </div>
-                  <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
-                    <div className="absolute -left-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-white"></div>
+                  <div className="bg-white px-2 sm:px-3 py-1 sm:py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
+                    <div className="absolute -left-2 top-2 sm:top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-white"></div>
                     <p className="text-xs font-bold text-gray-900 whitespace-nowrap">So many notes, but no real insight.</p>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute top-1/2 right-4 transform -translate-y-1/2 animate-bounce-slow z-30">
+              <div className="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 animate-bounce-slow z-30 hidden sm:block">
                 <div className="flex items-center space-x-2">
-                  <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
-                    <div className="absolute -right-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-white"></div>
-                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">My calendar is full, but I’m still overwhelmed.</p>
+                  <div className="bg-white px-2 sm:px-3 py-1 sm:py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
+                    <div className="absolute -right-2 top-2 sm:top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-white"></div>
+                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">My calendar is full, but I'm still overwhelmed.</p>
                   </div>
-                  <div className="w-12 h-12 bg-pink-200 rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-lg">😵</span>
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-pink-200 rounded-full flex items-center justify-center shadow-md">
+                    <span className="text-sm sm:text-lg">😵</span>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute bottom-1/3 left-1/4 transform rotate-3 animate-bounce-slow z-30">
+              <div className="absolute bottom-1/3 left-1/4 transform rotate-3 animate-bounce-slow z-30 hidden sm:block">
                 <div className="flex items-center space-x-2">
-                  <div className="w-12 h-12 bg-indigo-200 rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-lg">😔</span>
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-indigo-200 rounded-full flex items-center justify-center shadow-md">
+                    <span className="text-sm sm:text-lg">😔</span>
                   </div>
-                  <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
-                    <div className="absolute -left-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-white"></div>
-                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">I’m collecting data, not wisdom.</p>
+                  <div className="bg-white px-2 sm:px-3 py-1 sm:py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
+                    <div className="absolute -left-2 top-2 sm:top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-white"></div>
+                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">I'm collecting data, not wisdom.</p>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute top-1/3 right-1/4 transform -rotate-3 animate-bounce-slow z-30">
+              <div className="absolute top-1/3 right-1/4 transform -rotate-3 animate-bounce-slow z-30 hidden sm:block">
                 <div className="flex items-center space-x-2">
-                  <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
-                    <div className="absolute -right-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-white"></div>
+                  <div className="bg-white px-2 sm:px-3 py-1 sm:py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
+                    <div className="absolute -right-2 top-2 sm:top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-white"></div>
                     <p className="text-xs font-bold text-gray-900 whitespace-nowrap">Why am I still stuck?</p>
                   </div>
-                  <div className="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-lg">😰</span>
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-orange-200 rounded-full flex items-center justify-center shadow-md">
+                    <span className="text-sm sm:text-lg">😰</span>
                   </div>
                 </div>
               </div>
@@ -251,18 +251,18 @@ const HeroSection = () => {
           </div>
 
           {/* Moved and Enhanced Content Section */}
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium mb-6 text-left">
+          <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium mb-4 sm:mb-6 text-left">
               Your Toggl chart tells a number. Your Todoist list shows a task. They miss the story.
             </p>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium mb-12 text-left">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium mb-8 sm:mb-12 text-left">
               We find it for you: the story of how 5 hours of sleep created a 2 PM creative block. The one about back-to-back meetings causing an evening of scattered focus. Talk to your AI Coach, and for the first time, <span className="font-bold bg-yellow-300 px-1 rounded">read the narrative of your own productivity</span>.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-              <button className="group relative bg-yellow-300 text-gray-900 px-12 py-5 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center space-x-3 overflow-hidden">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
+              <button className="group relative bg-yellow-300 text-gray-900 px-8 sm:px-12 py-4 sm:py-5 rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center space-x-3 overflow-hidden w-full sm:w-auto">
                 <span className="relative z-10">Join the Waitlist</span>
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform relative z-10" />
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform relative z-10" />
               </button>
               <div className="text-sm text-gray-700 max-w-sm p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-gray-100">
                 <span className="text-yellow-600 font-semibold block mb-1">Early Access Opportunity</span>
@@ -272,30 +272,30 @@ const HeroSection = () => {
           </div>
 
           {/* Enhanced Trust Indicators */}
-          <div className="flex flex-wrap items-center justify-center gap-12 mt-12 pt-12 border-t border-gray-200">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 lg:gap-12 mt-8 sm:mt-12 pt-8 sm:pt-12 border-t border-gray-200">
             <div className="flex items-center space-x-3 group">
-              <div className="p-3 rounded-xl bg-blue-50 group-hover:bg-blue-100 transition-colors">
-                <MessageCircle className="h-6 w-6 text-blue-500" />
+              <div className="p-2 sm:p-3 rounded-xl bg-blue-50 group-hover:bg-blue-100 transition-colors">
+                <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 text-blue-500" />
               </div>
-              <span className="text-base text-gray-600 font-medium group-hover:text-blue-500 transition-colors">Root Cause Diagnosis</span>
+              <span className="text-sm sm:text-base text-gray-600 font-medium group-hover:text-blue-500 transition-colors">Root Cause Diagnosis</span>
             </div>
             <div className="flex items-center space-x-3 group">
-              <div className="p-3 rounded-xl bg-purple-50 group-hover:bg-purple-100 transition-colors">
-                <Zap className="h-6 w-6 text-purple-500" />
+              <div className="p-2 sm:p-3 rounded-xl bg-purple-50 group-hover:bg-purple-100 transition-colors">
+                <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-purple-500" />
               </div>
-              <span className="text-base text-gray-600 font-medium group-hover:text-purple-500 transition-colors">Personalized AI Coaching</span>
+              <span className="text-sm sm:text-base text-gray-600 font-medium group-hover:text-purple-500 transition-colors">Personalized AI Coaching</span>
             </div>
             <div className="flex items-center space-x-3 group">
-              <div className="p-3 rounded-xl bg-indigo-50 group-hover:bg-indigo-100 transition-colors">
-                <Moon className="h-6 w-6 text-indigo-500" />
+              <div className="p-2 sm:p-3 rounded-xl bg-indigo-50 group-hover:bg-indigo-100 transition-colors">
+                <Moon className="h-5 w-5 sm:h-6 sm:w-6 text-indigo-500" />
               </div>
-              <span className="text-base text-gray-600 font-medium group-hover:text-indigo-500 transition-colors">Connects Work & Well-being</span>
+              <span className="text-sm sm:text-base text-gray-600 font-medium group-hover:text-indigo-500 transition-colors">Connects Work & Well-being</span>
             </div>
             <div className="flex items-center space-x-3 group">
-              <div className="p-3 rounded-xl bg-orange-50 group-hover:bg-orange-100 transition-colors">
-                <Coffee className="h-6 w-6 text-orange-500" />
+              <div className="p-2 sm:p-3 rounded-xl bg-orange-50 group-hover:bg-orange-100 transition-colors">
+                <Coffee className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500" />
               </div>
-              <span className="text-base text-gray-600 font-medium group-hover:text-orange-500 transition-colors">Actionable Daily Insights</span>
+              <span className="text-sm sm:text-base text-gray-600 font-medium group-hover:text-orange-500 transition-colors">Actionable Daily Insights</span>
             </div>
           </div>
         </div>

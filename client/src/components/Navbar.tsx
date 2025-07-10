@@ -19,13 +19,13 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 py-3 bg-white/90 backdrop-blur-lg border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             {/* Logo */}
             <a href="#" className="flex-shrink-0 flex items-center space-x-2">
-              <Brain className="h-10 w-10 text-purple-600" />
+              <Brain className="h-8 w-8 sm:h-10 sm:w-10 text-purple-600" />
               <div className="flex flex-col">
-                <span className="text-sm font-bold text-gray-900 leading-tight">AI Productivity</span>
-                <span className="text-xl font-bold text-gray-900 leading-tight">Coach</span>
+                <span className="text-xs sm:text-sm font-bold text-gray-900 leading-tight">AI Productivity</span>
+                <span className="text-lg sm:text-xl font-bold text-gray-900 leading-tight">Coach</span>
               </div>
             </a>
             {/* Desktop Tagline */}
@@ -39,8 +39,8 @@ const Navbar = () => {
           </div>
           
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
-              <ul className="flex items-center space-x-6 text-sm">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
+              <ul className="flex items-center space-x-4 lg:space-x-6 text-sm">
                 {navItems.map((item) => (
                   <li key={item.label}>
                     <a
@@ -52,11 +52,11 @@ const Navbar = () => {
                   </li>
                 ))}
               </ul>
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-3 lg:space-x-4">
                 <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm whitespace-nowrap">
                   Sign in
                 </a>
-                <button className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:shadow-lg whitespace-nowrap">
+                <button className="bg-green-600 hover:bg-green-700 text-white px-4 lg:px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:shadow-lg whitespace-nowrap">
                   Join Waitlist
                 </button>
               </div>
@@ -75,12 +75,13 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-100">
               {navItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  className="block px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                  onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
                 </a>
@@ -88,10 +89,10 @@ const Navbar = () => {
             </div>
             <div className="pt-4 pb-3 border-t border-gray-200 bg-white">
               <div className="px-5 flex flex-col space-y-3">
-                <a href="#" className="text-base font-medium text-gray-600 hover:text-gray-900">
+                <a href="#" className="text-base font-medium text-gray-600 hover:text-gray-900 py-2">
                   Sign in
                 </a>
-                <button className="bg-green-600 hover:bg-green-700 text-white w-full py-2.5 rounded-lg font-semibold">
+                <button className="bg-green-600 hover:bg-green-700 text-white w-full py-3 rounded-lg font-semibold transition-colors">
                   Join Waitlist
                 </button>
               </div>
