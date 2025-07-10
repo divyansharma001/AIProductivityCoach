@@ -12,7 +12,7 @@ const HeroSection = () => {
               <br />
               <span className="relative">
                 <span className="relative z-10">a root cause.</span>
-                <span className="absolute bottom-2 left-0 w-full h-3 bg-gray-100 -rotate-1"></span>
+                <span className="absolute bottom-2 left-0 w-full h-3 bg-yellow-300 -rotate-1"></span>
               </span>
               <br />
               <span className="block mt-4 text-gray-900">
@@ -252,8 +252,11 @@ const HeroSection = () => {
 
           {/* Moved and Enhanced Content Section */}
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium mb-12">
-              Traditional tools only show you the symptoms: distraction, procrastination, burnout. Our conversational AI Coach listens to your day to identify the source, connecting your focus to the crucial factors of sleep, energy, and well-being.
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium mb-6 text-left">
+              Your Toggl chart tells a number. Your Todoist list shows a task. They miss the story.
+            </p>
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium mb-12 text-left">
+              We find it for you: the story of how 5 hours of sleep created a 2 PM creative block. The one about back-to-back meetings causing an evening of scattered focus. Talk to your AI Coach, and for the first time, <span className="font-bold bg-yellow-300 px-1 rounded">read the narrative of your own productivity</span>.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
