@@ -279,25 +279,25 @@ const HeroSection = () => {
               <div className="p-3 rounded-xl bg-blue-50 group-hover:bg-blue-100 transition-colors">
                 <MessageCircle className="h-6 w-6 text-blue-500" />
               </div>
-              <span className="text-base text-gray-600 font-medium group-hover:text-blue-500 transition-colors">Voice & Text Ready</span>
+              <span className="text-base text-gray-600 font-medium group-hover:text-blue-500 transition-colors">Root Cause Diagnosis</span>
             </div>
             <div className="flex items-center space-x-3 group">
               <div className="p-3 rounded-xl bg-purple-50 group-hover:bg-purple-100 transition-colors">
                 <Zap className="h-6 w-6 text-purple-500" />
               </div>
-              <span className="text-base text-gray-600 font-medium group-hover:text-purple-500 transition-colors">Instant Insights</span>
+              <span className="text-base text-gray-600 font-medium group-hover:text-purple-500 transition-colors">Personalized AI Coaching</span>
             </div>
             <div className="flex items-center space-x-3 group">
               <div className="p-3 rounded-xl bg-indigo-50 group-hover:bg-indigo-100 transition-colors">
                 <Moon className="h-6 w-6 text-indigo-500" />
               </div>
-              <span className="text-base text-gray-600 font-medium group-hover:text-indigo-500 transition-colors">Holistic Approach</span>
+              <span className="text-base text-gray-600 font-medium group-hover:text-indigo-500 transition-colors">Connects Work & Well-being</span>
             </div>
             <div className="flex items-center space-x-3 group">
               <div className="p-3 rounded-xl bg-orange-50 group-hover:bg-orange-100 transition-colors">
                 <Coffee className="h-6 w-6 text-orange-500" />
               </div>
-              <span className="text-base text-gray-600 font-medium group-hover:text-orange-500 transition-colors">Daily Companion</span>
+              <span className="text-base text-gray-600 font-medium group-hover:text-orange-500 transition-colors">Actionable Daily Insights</span>
             </div>
           </div>
         </div>
