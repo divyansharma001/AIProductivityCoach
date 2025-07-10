@@ -31,12 +31,10 @@ const Navbar = () => {
             {/* Desktop Tagline */}
             <div className="hidden lg:flex items-center space-x-2 text-sm">
                 <span className="text-gray-500">is the</span>
-                <span className="bg-yellow-300 px-2 py-0.5 text-sm font-bold text-gray-900 transform -rotate-1 whitespace-nowrap">refreshingly clear</span>
-                <span className="text-gray-500">productivity system by</span>
-                <div className="flex items-center space-x-1">
-                  <Brain className="h-4 w-4 text-purple-600" />
-                  <span className="font-semibold text-gray-900">AI insights</span>
-                </div>
+                <span className="bg-yellow-300 px-2 py-0.5 text-sm font-bold text-gray-900 transform -rotate-1 whitespace-nowrap">root-cause</span>
+                <span className="text-gray-500">productivity system that asks</span>
+                <span className="font-semibold text-gray-900">why.</span>
+           
             </div>
           </div>
           
