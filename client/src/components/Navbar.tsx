@@ -1,18 +1,20 @@
 import { Brain, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
   const navItems = [
-    { label: "Real world results", href: "#" },
-    { label: "Features", href: "#" },
-    { label: "Paths", href: "#" },
-    { label: "Pricing", href: "#" },
+    { label: "Real world results", href: "/#results" },
+    { label: "Features", href: "/#features" },
+    { label: "Paths", href: "/#paths" },
+    { label: "Pricing", href: "/pricing" },
   ];
 
   return (
@@ -21,13 +23,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2 sm:space-x-4">
             {/* Logo */}
-            <a href="#" className="flex-shrink-0 flex items-center space-x-2">
+            <Link to="/" className="flex-shrink-0 flex items-center space-x-2">
               <Brain className="h-8 w-8 sm:h-10 sm:w-10 text-purple-600" />
               <div className="flex flex-col">
                 <span className="text-xs sm:text-sm font-bold text-gray-900 leading-tight">AI Productivity</span>
                 <span className="text-lg sm:text-xl font-bold text-gray-900 leading-tight">Coach</span>
               </div>
-            </a>
+            </Link>
             {/* Desktop Tagline */}
             <div className="hidden lg:flex items-center space-x-2 text-sm">
                 <span className="text-gray-500">is the</span>
@@ -43,19 +45,23 @@ const Navbar = () => {
               <ul className="flex items-center space-x-4 lg:space-x-6 text-sm">
                 {navItems.map((item) => (
                   <li key={item.label}>
-                    <a
-                      href={item.href}
-                      className="text-gray-600 hover:text-gray-900 transition-colors font-medium whitespace-nowrap"
+                    <Link
+                      to={item.href}
+                      className={`transition-colors font-medium whitespace-nowrap ${
+                        location.pathname === item.href 
+                          ? 'text-gray-900' 
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
               <div className="flex items-center space-x-3 lg:space-x-4">
-                <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm whitespace-nowrap">
+                <Link to="#" className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm whitespace-nowrap">
                   Sign in
-                </a>
+                </Link>
                 <button className="bg-green-600 hover:bg-green-700 text-white px-4 lg:px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:shadow-lg whitespace-nowrap">
                   Join Waitlist
                 </button>
@@ -77,21 +83,25 @@ const Navbar = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-100">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
-                  className="block px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                  to={item.href}
+                  className={`block px-3 py-3 rounded-md text-base font-medium transition-colors ${
+                    location.pathname === item.href 
+                      ? 'text-gray-900 bg-gray-50' 
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </div>
             <div className="pt-4 pb-3 border-t border-gray-200 bg-white">
               <div className="px-5 flex flex-col space-y-3">
-                <a href="#" className="text-base font-medium text-gray-600 hover:text-gray-900 py-2">
+                <Link to="#" className="text-base font-medium text-gray-600 hover:text-gray-900 py-2">
                   Sign in
-                </a>
+                </Link>
                 <button className="bg-green-600 hover:bg-green-700 text-white w-full py-3 rounded-lg font-semibold transition-colors">
                   Join Waitlist
                 </button>
