@@ -159,7 +159,7 @@ const HeroSection = () => {
                   </div>
                   <div className="bg-white px-4 py-3 rounded-2xl shadow-xl border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
                     <div className="absolute -left-2 top-4 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-gray-900"></div>
-                    <p className="text-sm font-bold text-gray-900 whitespace-nowrap">NOTION ISN'T HELPING!</p>
+                    <p className="text-sm font-bold text-gray-900 whitespace-nowrap">I know what I did, but not why I did it.</p>
                   </div>
                 </div>
               </div>
@@ -168,7 +168,7 @@ const HeroSection = () => {
                 <div className="flex items-center space-x-2">
                   <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
                     <div className="absolute -right-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-white"></div>
-                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">TODOIST MADE IT WORSE!</p>
+                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">My to-do list grows, but my energy shrinks.</p>
                   </div>
                   <div className="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center shadow-md">
                     <span className="text-lg">😤</span>
@@ -183,7 +183,7 @@ const HeroSection = () => {
                   </div>
                   <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
                     <div className="absolute -left-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-white"></div>
-                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">RESCUETIME SHOWS THE PROBLEM!</p>
+                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">I’m tracking everything, but nothing’s changing.</p>
                   </div>
                 </div>
               </div>
@@ -192,7 +192,7 @@ const HeroSection = () => {
                 <div className="flex items-center space-x-2">
                   <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
                     <div className="absolute -right-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-white"></div>
-                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">FOCUS APPS DON'T WORK!</p>
+                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">Timers don’t fix my burnout.</p>
                   </div>
                   <div className="w-12 h-12 bg-red-200 rounded-full flex items-center justify-center shadow-md">
                     <span className="text-lg">😩</span>
@@ -207,7 +207,7 @@ const HeroSection = () => {
                   </div>
                   <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
                     <div className="absolute -left-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-white"></div>
-                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">EVERNOTE JUST COLLECTS DUST!</p>
+                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">So many notes, but no real insight.</p>
                   </div>
                 </div>
               </div>
@@ -216,7 +216,7 @@ const HeroSection = () => {
                 <div className="flex items-center space-x-2">
                   <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
                     <div className="absolute -right-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-white"></div>
-                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">TRELLO BOARDS ARE CHAOS!</p>
+                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">My calendar is full, but I’m still overwhelmed.</p>
                   </div>
                   <div className="w-12 h-12 bg-pink-200 rounded-full flex items-center justify-center shadow-md">
                     <span className="text-lg">😵</span>
@@ -231,7 +231,7 @@ const HeroSection = () => {
                   </div>
                   <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
                     <div className="absolute -left-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-r-8 border-r-white"></div>
-                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">TIMERS STRESS ME OUT!</p>
+                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">I’m collecting data, not wisdom.</p>
                   </div>
                 </div>
               </div>
@@ -240,7 +240,7 @@ const HeroSection = () => {
                 <div className="flex items-center space-x-2">
                   <div className="bg-white px-3 py-2 rounded-xl shadow-lg border-2 border-gray-900 relative max-w-xs transform hover:-translate-y-1 transition-transform">
                     <div className="absolute -right-2 top-3 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-white"></div>
-                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">CALENDARS DON'T STICK!</p>
+                    <p className="text-xs font-bold text-gray-900 whitespace-nowrap">Why am I still stuck?</p>
                   </div>
                   <div className="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center shadow-md">
                     <span className="text-lg">😰</span>
