@@ -260,15 +260,13 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-              <button className="group relative bg-gradient-to-r from-green-600 to-green-500 text-white px-12 py-5 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center space-x-3 overflow-hidden">
-                <span className="relative z-10">Start Understanding for Free</span>
+              <button className="group relative bg-yellow-300 text-gray-900 px-12 py-5 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center space-x-3 overflow-hidden">
+                <span className="relative z-10">Join the Waitlist</span>
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform relative z-10" />
-                <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
               </button>
-              
-              <div className="text-sm text-gray-500 max-w-sm p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-gray-100">
-                <span className="text-purple-600 font-semibold block mb-1">Limited Offer:</span>
-                Join the Founder's Circle - First 1,000 users get lifetime premium access
+              <div className="text-sm text-gray-700 max-w-sm p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-gray-100">
+                <span className="text-yellow-600 font-semibold block mb-1">Early Access Opportunity</span>
+                First 50 on the waitlist get exclusive beta access and 6 months free.
               </div>
             </div>
           </div>
