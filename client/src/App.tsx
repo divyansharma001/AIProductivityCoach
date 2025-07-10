@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import Pricing from './components/Pricing';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
       <main className="pt-20">
         <HeroSection />
+        <Pricing />
       </main>
     </div>
   );
