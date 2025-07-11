@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MessageCircle, Zap, Moon, Coffee, ArrowRight, Notebook, StickyNote as Sticky, CheckSquare, FileText, Layers, BarChart3, Target, Clock, PenTool, Calendar, Timer, Brain } from 'lucide-react';
 
 const HeroSection = () => {
+    const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      // TODO: Use import.meta.env.VITE_API_BASE_URL
+      fetch('http://localhost:3001/api/waitlist/count')
+        .then(res => res.json())
+        .then(data => {
+          if (data && typeof data.count === 'number') {
+            setWaitlistCount(data.count);
+          }
+        });
+    }, []);
+
     return (
         <section className="px-4 sm:px-6 py-12 sm:py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto">
@@ -260,15 +275,22 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
-              <button className="group relative bg-yellow-300 text-gray-900 px-8 sm:px-12 py-4 sm:py-5 rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center space-x-3 overflow-hidden w-full sm:w-auto">
+              <button 
+                onClick={() => navigate('/waitlist')}
+                className="group relative bg-yellow-300 text-gray-900 px-8 sm:px-12 py-4 sm:py-5 rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center space-x-3 overflow-hidden w-full sm:w-auto">
                 <span className="relative z-10">Join the Waitlist</span>
                 <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform relative z-10" />
               </button>
               <div className="text-sm text-gray-700 max-w-sm p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-gray-100">
                 <span className="text-yellow-600 font-semibold block mb-1">Early Access Opportunity</span>
-                First 50 on the waitlist get exclusive beta access and 6 months free.
+                Few early members on the waitlist get exclusive beta access and 6 months free.
               </div>
             </div>
+            {waitlistCount !== null && waitlistCount > 0 && (
+                <div className="mt-8 text-center text-gray-600 font-medium">
+                    Join <span className="text-gray-900 font-bold">{waitlistCount}</span> others on the list!
+                </div>
+            )}
           </div>
 
           {/* Enhanced Trust Indicators */}

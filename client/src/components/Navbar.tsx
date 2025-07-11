@@ -1,18 +1,24 @@
 import { Brain, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const handleWaitlistClick = () => {
+    navigate('/waitlist');
+    setMenuOpen(false);
+  };
+
   const navItems = [
     { label: "Real world results", href: "/#results" },
-    { label: "Features", href: "/#features" },
+    { label: "Features", href: "/features" },
     { label: "Paths", href: "/#paths" },
     { label: "Pricing", href: "/pricing" },
   ];
@@ -45,24 +51,23 @@ const Navbar = () => {
               <ul className="flex items-center space-x-4 lg:space-x-6 text-sm">
                 {navItems.map((item) => (
                   <li key={item.label}>
-                    <Link
-                      to={item.href}
-                      className={`transition-colors font-medium whitespace-nowrap ${
-                        location.pathname === item.href 
-                          ? 'text-gray-900' 
-                          : 'text-gray-600 hover:text-gray-900'
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
+                      <Link
+                        to={item.href}
+                        className={`transition-colors font-medium whitespace-nowrap ${
+                          location.pathname === item.href 
+                            ? 'text-gray-900' 
+                            : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
                   </li>
                 ))}
               </ul>
               <div className="flex items-center space-x-3 lg:space-x-4">
-                <Link to="#" className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm whitespace-nowrap">
-                  Sign in
-                </Link>
-                <button className="bg-green-600 hover:bg-green-700 text-white px-4 lg:px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:shadow-lg whitespace-nowrap">
+                <button 
+                  onClick={handleWaitlistClick}
+                  className="bg-green-600 hover:bg-green-700 text-white px-4 lg:px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:shadow-lg whitespace-nowrap">
                   Join Waitlist
                 </button>
               </div>
@@ -83,26 +88,25 @@ const Navbar = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-100">
               {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  to={item.href}
-                  className={`block px-3 py-3 rounded-md text-base font-medium transition-colors ${
-                    location.pathname === item.href 
-                      ? 'text-gray-900 bg-gray-50' 
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                  }`}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    className={`block px-3 py-3 rounded-md text-base font-medium transition-colors ${
+                      location.pathname === item.href 
+                        ? 'text-gray-900 bg-gray-50' 
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
               ))}
             </div>
             <div className="pt-4 pb-3 border-t border-gray-200 bg-white">
               <div className="px-5 flex flex-col space-y-3">
-                <Link to="#" className="text-base font-medium text-gray-600 hover:text-gray-900 py-2">
-                  Sign in
-                </Link>
-                <button className="bg-green-600 hover:bg-green-700 text-white w-full py-3 rounded-lg font-semibold transition-colors">
+                <button 
+                  onClick={handleWaitlistClick}
+                  className="bg-green-600 hover:bg-green-700 text-white w-full py-3 rounded-lg font-semibold transition-colors">
                   Join Waitlist
                 </button>
               </div>
