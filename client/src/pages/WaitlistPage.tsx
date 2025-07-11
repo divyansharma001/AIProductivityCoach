@@ -11,7 +11,7 @@ const WaitlistPage: React.FC = () => {
     setMessage('');
     try {
       // TODO: Use import.meta.env.VITE_API_BASE_URL
-      const res = await fetch('http://localhost:3001/api/waitlist/join', {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/waitlist/join`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),

@@ -14,7 +14,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 
 // CORS configuration
 const corsOrigins = NODE_ENV === 'production' 
-  ? [process.env.CORS_ORIGIN_PROD || 'https://yourdomain.com']
+  ? [process.env.CORS_ORIGIN_PROD || 'https://getproductivewithai.vercel.app']
   : [process.env.CORS_ORIGIN_DEV || 'http://localhost:5173', 'http://localhost:3000'];
 
 // Middleware

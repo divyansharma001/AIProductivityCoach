@@ -8,7 +8,7 @@ const HeroSection = () => {
 
     useEffect(() => {
       // TODO: Use import.meta.env.VITE_API_BASE_URL
-      fetch('http://localhost:3001/api/waitlist/count')
+      fetch(`${import.meta.env.VITE_API_BASE_URL}/api/waitlist/count`)
         .then(res => res.json())
         .then(data => {
           if (data && typeof data.count === 'number') {
