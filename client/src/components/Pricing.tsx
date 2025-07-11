@@ -4,7 +4,7 @@ import { Check, Star, ArrowRight } from 'lucide-react';
 const plans = [
   {
     name: 'Free',
-    price: '₹0',
+    price: '$0',
     period: '',
     description: 'Perfect for getting started with productivity tracking',
     features: [
@@ -20,7 +20,7 @@ const plans = [
   },
   {
     name: 'Premium Monthly',
-    price: '₹199',
+    price: '$5',
     period: '/month',
     description: 'Unlock your personal AI Coach and advanced features',
     features: [
@@ -39,18 +39,18 @@ const plans = [
   },
   {
     name: 'Premium Annual',
-    price: '₹1,499',
+    price: '$50',
     period: '/year',
-    description: 'Best value with 4 months free',
+    description: 'Best value with 2 months free',
     features: [
       'Everything in Premium Monthly',
-      '4 months free (best value)',
+      '2 months free (best value)',
       'Early access to new features',
       'Dedicated success manager',
       'Custom integrations',
       'Team insights dashboard',
     ],
-    cta: 'Save 33%',
+    cta: 'Save 17%',
     highlight: true,
     popular: false,
   },
