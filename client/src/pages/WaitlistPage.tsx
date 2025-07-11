@@ -56,26 +56,26 @@ const WaitlistPage: React.FC = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Your email</label>
-            <input
+        <input
               id="email"
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
               placeholder="you@example.com"
-              required
+          required
               className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-yellow-300 focus:ring focus:ring-yellow-100 focus:ring-opacity-50 outline-none transition-colors"
-            />
+        />
           </div>
           
-          <button
-            type="submit"
-            disabled={status === 'loading'}
+        <button
+          type="submit"
+          disabled={status === 'loading'}
             className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors disabled:opacity-50"
-          >
+        >
             {status === 'loading' ? 'Processing...' : 'Join Waitlist'}
-          </button>
+        </button>
           
-          {message && (
+      {message && (
             <div className={`mt-3 text-center p-3 rounded-lg ${status === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
               {message}
             </div>
