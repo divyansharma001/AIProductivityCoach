@@ -14,6 +14,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@qdrant/js-client-rest": "^1.16.2",
     "better-auth": "^1.4.17",
     "bullmq": "^5.67.1",
     "cors": "^2.8.6",
