@@ -45,3 +45,13 @@ export const verification = pgTable("verification", {
   createdAt: timestamp("created_at"),
   updatedAt: timestamp("updated_at"),
 });
+
+export const logEntry = pgTable("log_entry", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => user.id),
+  content: text("content").notNull(),
+  type: text("type").notNull().default("text"),
+  status: text("status").notNull().default("pending"), 
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
