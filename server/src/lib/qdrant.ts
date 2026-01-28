@@ -16,7 +16,7 @@ export const vectorService = {
       if (!exists) {
         await client.createCollection(COLLECTION_NAME, {
           vectors: {
-            size: 768, 
+            size: 3072, 
             distance: "Cosine",
           },
         });

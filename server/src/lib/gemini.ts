@@ -7,12 +7,12 @@ if (!process.env.GEMINI_API_KEY) {
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 
-const embeddingModel = genAI.getGenerativeModel({ model: "text-embedding-004" });
+const embeddingModel = genAI.getGenerativeModel({ model: "gemini-embedding-001" });
 const chatModel = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 export const aiService = {
   
-   // Converts text into a vector array (768 dimensions)
+   // Converts text into a vector array (3072 dimensions)
    
   async generateEmbedding(text: string): Promise<number[]> {
     try {

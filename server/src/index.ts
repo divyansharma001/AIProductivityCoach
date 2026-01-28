@@ -113,6 +113,76 @@ app.post("/api/logs", async (req, res) => {
     }
 });
 
+app.post("/api/chat", async (req, res) => {
+    // 1. Auth Check
+    const session = await auth.api.getSession({
+        headers: req.headers
+    });
+
+    if (!session) {
+        res.status(401).json({ error: "Unauthorized" });
+        return;
+    }
+
+    const { message } = req.body;
+    if (!message) {
+        res.status(400).json({ error: "Message is required" });
+        return;
+    }
+
+    try {
+        console.log(`[Chat] Received message: "${message}"`);
+
+        const queryVector = await aiService.generateEmbedding(message);
+
+        const searchResults = await vectorService.client.search(vectorService.COLLECTION_NAME, {
+            vector: queryVector,
+            limit: 5,
+            filter: {
+                must: [
+                    {
+                        key: "userId",
+                        match: {
+                            value: session.user.id
+                        }
+                    }
+                ]
+            },
+            with_payload: true
+        });
+
+        const context = searchResults
+            .map(item => `- ${item.payload?.timestamp}: ${item.payload?.text}`)
+            .join("\n");
+
+        console.log(`[Chat] Found ${searchResults.length} relevant memories.`);
+
+        const systemPrompt = `
+        You are an expert productivity coach.
+        The user is asking you a question. 
+        Here is the relevant data from their past logs (Context):
+        
+        ${context}
+        
+        If the context is empty, say you don't have enough data yet.
+        Analyze the context to answer the user's question: "${message}"
+        Keep the answer concise, actionable, and encouraging.
+        `;
+
+        const answer = await aiService.generateResponse(systemPrompt);
+
+        res.json({ 
+            success: true, 
+            answer, 
+            sources: searchResults.length 
+        });
+
+    } catch (error) {
+        console.error("Chat error:", error);
+        res.status(500).json({ error: "Failed to generate response" });
+    }
+});
+
 
 const startServer = async () => {
     await vectorService.initCollection(); 
