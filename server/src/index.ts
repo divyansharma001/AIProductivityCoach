@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import { toNodeHandler } from "better-auth/node";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4, v5 as uuidv5 } from "uuid";
 import { auth } from "./lib/auth.js";
 import { addLogJob } from "./lib/queue.js";
 import "./workers/log.worker.js";
@@ -114,11 +114,7 @@ app.post("/api/logs", async (req, res) => {
 });
 
 app.post("/api/chat", async (req, res) => {
-    // 1. Auth Check
-    const session = await auth.api.getSession({
-        headers: req.headers
-    });
-
+    const session = await auth.api.getSession({ headers: req.headers });
     if (!session) {
         res.status(401).json({ error: "Unauthorized" });
         return;
@@ -130,51 +126,68 @@ app.post("/api/chat", async (req, res) => {
         return;
     }
 
+    const userId = session.user.id;
+
     try {
-        console.log(`[Chat] Received message: "${message}"`);
+        console.log(`[Chat] Processing: "${message}"`);
+        
+        const vector = await aiService.generateEmbedding(message);
+        
+        const [factResults, logResults, todaySummary] = await Promise.all([
+            // A. Search Facts (Long Term Memory)
+            vectorService.search(vectorService.FACTS_COLLECTION, vector, 5, userId),
+            
+            // B. Search Specific Logs (Episodic Memory)
+            vectorService.search(vectorService.LOGS_COLLECTION, vector, 5, userId),
 
-        const queryVector = await aiService.generateEmbedding(message);
+            // C. Get Today's Context (Working Memory)
+            (async () => {
+                const today = new Date().toISOString().split('T')[0];
+                const NAMESPACE = "6ba7b810-9dad-11d1-80b4-00c04fd430c8"; 
+                const summaryId = uuidv5(`${userId}_${today}`, NAMESPACE);
+                return await vectorService.getPoint(vectorService.SUMMARIES_COLLECTION, summaryId);
+            })()
+        ]);
 
-        const searchResults = await vectorService.client.search(vectorService.COLLECTION_NAME, {
-            vector: queryVector,
-            limit: 5,
-            filter: {
-                must: [
-                    {
-                        key: "userId",
-                        match: {
-                            value: session.user.id
-                        }
-                    }
-                ]
-            },
-            with_payload: true
-        });
-
-        const context = searchResults
-            .map(item => `- ${item.payload?.timestamp}: ${item.payload?.text}`)
-            .join("\n");
-
-        console.log(`[Chat] Found ${searchResults.length} relevant memories.`);
+        // CONTEXT ENGINEERING (The "ACE" Layer)
+        
+        const factsContext = factResults.map(i => `- ${i.payload?.text}`).join("\n") || "No known relevant facts.";
+        const logsContext = logResults.map(i => `- ${i.payload?.timestamp}: ${i.payload?.text}`).join("\n") || "No relevant past logs.";
+        const currentContext = todaySummary?.payload?.text || "No logs recorded yet today.";
 
         const systemPrompt = `
-        You are an expert productivity coach.
-        The user is asking you a question. 
-        Here is the relevant data from their past logs (Context):
+        You are an expert Productivity Coach utilizing an Agentic Cognitive Architecture.
         
-        ${context}
+        ### USER PROFILE (Long Term Memory)
+        ${factsContext}
         
-        If the context is empty, say you don't have enough data yet.
-        Analyze the context to answer the user's question: "${message}"
-        Keep the answer concise, actionable, and encouraging.
+        ### CURRENT STATUS (Working Memory - Today)
+        ${currentContext}
+        
+        ### RELEVANT HISTORY (Episodic Memory)
+        ${logsContext}
+        
+        ### USER QUERY
+        "${message}"
+        
+        ### INSTRUCTIONS
+        1. Analyze the User Profile to understand their constraints (e.g., "sensitive to caffeine").
+        2. Check the Current Status to see if today's actions align with their goals.
+        3. Use Relevant History to find patterns.
+        4. Answer the query. Be direct. If the user is doing something they previously said affects them negatively, point it out gently.
         `;
 
+        // GENERATION & REFINE (The "Action" Layer)
         const answer = await aiService.generateResponse(systemPrompt);
 
         res.json({ 
             success: true, 
             answer, 
-            sources: searchResults.length 
+            debug: {
+                factsUsed: factResults.length,
+                logsUsed: logResults.length,
+                hasSummary: !!todaySummary
+            }
         });
 
     } catch (error) {

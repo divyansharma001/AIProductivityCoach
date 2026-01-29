@@ -62,5 +62,39 @@ export const aiService = {
       console.error("Error extraction facts:", error);
       return []; 
     }
+  },
+
+  async updateDailySummary(currentSummary: string | null, newLogEntry: string): Promise<string> {
+    let prompt = "";
+
+    if (!currentSummary) {
+      prompt = `
+      Summarize this log entry into a coherent narrative for the day.
+      Log: "${newLogEntry}"
+      Summary:
+      `;
+    } else {
+      prompt = `
+      You are maintaining a daily journal summary.
+      
+      Current Summary of the day:
+      "${currentSummary}"
+      
+      New Event to add:
+      "${newLogEntry}"
+      
+      Task: Rewrite the Daily Summary to flow naturally including the new event. 
+      Keep it concise but capture the mood and key activities.
+      Updated Summary:
+      `;
+    }
+
+    try {
+      const result = await chatModel.generateContent(prompt);
+      return result.response.text();
+    } catch (error) {
+      console.error("Error generating summary:", error);
+      throw error;
+    }
   }
 };

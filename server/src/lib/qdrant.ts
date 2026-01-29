@@ -6,32 +6,32 @@ export const vectorService = {
   client,
   LOGS_COLLECTION: "productivity_logs",
   FACTS_COLLECTION: "user_facts",
+  SUMMARIES_COLLECTION: "daily_summaries",
 
   async initCollection() {
     try {
       const result = await client.getCollections();
       const collections = result.collections.map((c) => c.name);
 
-      if (!collections.includes(this.LOGS_COLLECTION)) {
-        await client.createCollection(this.LOGS_COLLECTION, {
-          vectors: { size: 3072, distance: "Cosine" },
-        });
-        console.log(`Collection '${this.LOGS_COLLECTION}' created.`);
-      }
+      const ensureCollection = async (name: string) => {
+        if (!collections.includes(name)) {
+          await client.createCollection(name, {
+            vectors: { size: 3072, distance: "Cosine" },
+          });
+          console.log(`Collection '${name}' created.`);
+        }
+      };
 
-      if (!collections.includes(this.FACTS_COLLECTION)) {
-        await client.createCollection(this.FACTS_COLLECTION, {
-          vectors: { size: 3072, distance: "Cosine" },
-        });
-        console.log(`Collection '${this.FACTS_COLLECTION}' created.`);
-      }
-      
+      await ensureCollection(this.LOGS_COLLECTION);
+      await ensureCollection(this.FACTS_COLLECTION);
+      await ensureCollection(this.SUMMARIES_COLLECTION); 
+
     } catch (error) {
       console.error("Error initializing Qdrant collections:", error);
     }
   },
-  
- async search(collectionName: string, vector: number[], limit: number = 5, userId: string) {
+
+  async search(collectionName: string, vector: number[], limit: number = 5, userId: string) {
     return client.search(collectionName, {
       vector,
       limit,
@@ -42,8 +42,7 @@ export const vectorService = {
     });
   },
 
-
-async upsertPoint(collectionName: string, id: string, vector: number[], payload: Record<string, any>) {
+  async upsertPoint(collectionName: string, id: string, vector: number[], payload: Record<string, any>) {
     return client.upsert(collectionName, {
       points: [
         {
@@ -53,5 +52,17 @@ async upsertPoint(collectionName: string, id: string, vector: number[], payload:
         },
       ],
     });
+  },
+
+  async getPoint(collectionName: string, id: string) {
+    try {
+      const result = await client.retrieve(collectionName, {
+        ids: [id],
+        with_payload: true
+      });
+      return result[0] || null;
+    } catch (error) {
+      return null;
+    }
   }
 };

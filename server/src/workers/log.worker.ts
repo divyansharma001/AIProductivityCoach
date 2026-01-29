@@ -34,7 +34,7 @@ export const logWorker = new Worker(
             const factVector = await aiService.generateEmbedding(fact);
             
             await vectorService.upsertPoint(vectorService.FACTS_COLLECTION, factId, factVector, {
-                text: fact, // the fact becomes the searchable text
+                text: fact,
                 sourceLogId: logId, 
                 userId: userId,
                 timestamp: new Date().toISOString(),
@@ -45,7 +45,33 @@ export const logWorker = new Worker(
         console.log("[Worker] No facts extracted.");
       }
 
+
+      console.log(`[Worker] Updating daily summary for user ${userId}...`);
+      
     
+      const today = new Date().toISOString().split('T')[0];
+      const { v5: uuidv5 } = await import('uuid');
+      const NAMESPACE = "6ba7b810-9dad-11d1-80b4-00c04fd430c8"; 
+      const deterministicId = uuidv5(`${userId}_${today}`, NAMESPACE);
+
+      const existingPoint = await vectorService.getPoint(vectorService.SUMMARIES_COLLECTION, deterministicId);
+      const currentSummaryText = existingPoint?.payload?.text as string || null;
+
+      const updatedSummary = await aiService.updateDailySummary(currentSummaryText, text);
+      console.log(`[Worker] New Daily Summary: ${updatedSummary}`);
+
+      const summaryVector = await aiService.generateEmbedding(updatedSummary);
+      
+      await vectorService.upsertPoint(vectorService.SUMMARIES_COLLECTION, deterministicId, summaryVector, {
+        text: updatedSummary,
+        userId: userId,
+        date: today,
+        type: "daily_summary",
+        lastUpdated: new Date().toISOString()
+      });
+
+
+      
       await db
         .update(logEntry)
         .set({ status: "processed", updatedAt: new Date() })
