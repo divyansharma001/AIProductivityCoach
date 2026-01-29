@@ -155,6 +155,18 @@ app.post("/api/chat", async (req, res) => {
         const logsContext = logResults.map(i => `- ${i.payload?.timestamp}: ${i.payload?.text}`).join("\n") || "No relevant past logs.";
         const currentContext = todaySummary?.payload?.text || "No logs recorded yet today.";
 
+        // Combine for the Verifier
+        const combinedContextForVerifier = `
+        [USER FACTS]:
+        ${factsContext}
+        
+        [TODAY'S SUMMARY]:
+        ${currentContext}
+        
+        [RELEVANT LOGS]:
+        ${logsContext}
+        `;
+
         const systemPrompt = `
         You are an expert Productivity Coach utilizing an Agentic Cognitive Architecture.
         
@@ -178,7 +190,8 @@ app.post("/api/chat", async (req, res) => {
         `;
 
         // GENERATION & REFINE (The "Action" Layer)
-        const answer = await aiService.generateResponse(systemPrompt);
+        // Use Verified Response 
+        const answer = await aiService.generateVerifiedResponse(systemPrompt, combinedContextForVerifier);
 
         res.json({ 
             success: true, 
@@ -186,7 +199,8 @@ app.post("/api/chat", async (req, res) => {
             debug: {
                 factsUsed: factResults.length,
                 logsUsed: logResults.length,
-                hasSummary: !!todaySummary
+                hasSummary: !!todaySummary,
+                verification: "Enabled"
             }
         });
 

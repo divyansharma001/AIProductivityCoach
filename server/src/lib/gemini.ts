@@ -96,5 +96,50 @@ export const aiService = {
       console.error("Error generating summary:", error);
       throw error;
     }
+  },
+
+  // Chain of Verification 
+  async generateVerifiedResponse(originalPrompt: string, contextData: string): Promise<string> {
+    try {
+      // Generate the Draft (The "Writer")
+      const draftResult = await chatModel.generateContent(originalPrompt);
+      const draftAnswer = draftResult.response.text();
+
+      // Verify the Draft (The "Editor")
+      const critiquePrompt = `
+      You are a strict Fact-Checking Editor.
+      
+      ### SOURCE DATA (The only truth):
+      ${contextData}
+      
+      ### DRAFT ANSWER:
+      ${draftAnswer}
+      
+      ### TASK:
+      1. Verify if the Draft Answer contains any claims NOT supported by the Source Data.
+      2. Verify if the tone is empathetic but objective.
+      
+      ### OUTPUT INSTRUCTIONS:
+      - If the Draft Answer is accurate based *only* on the Source Data, respond with exactly: "VALID"
+      - If the Draft Answer contains hallucinations or is rude, rewrite the answer completely to be accurate.
+      `;
+
+      const critiqueResult = await chatModel.generateContent(critiquePrompt);
+      const critiqueResponse = critiqueResult.response.text().trim();
+
+      // Logic: Return Draft or Correction
+      if (critiqueResponse.toUpperCase().includes("VALID")) {
+        console.log("[CoVe] Draft verified successfully.");
+        return draftAnswer;
+      } else {
+        console.log("[CoVe] Hallucination detected. Returning corrected version.");
+        return critiqueResponse;
+      }
+
+    } catch (error) {
+      console.error("Error in verification chain:", error);
+      // Fallback: If verification fails, just return the first draft (better than nothing)
+      return this.generateResponse(originalPrompt);
+    }
   }
 };
