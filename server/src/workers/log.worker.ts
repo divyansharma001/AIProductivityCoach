@@ -15,31 +15,47 @@ export const logWorker = new Worker(
     try {
       console.log(`[Worker] Processing Log ${logId}`);
 
-      const vector = await aiService.generateEmbedding(text);
-
-      await vectorService.upsertPoint(logId, vector, {
+      const logVector = await aiService.generateEmbedding(text);
+      await vectorService.upsertPoint(vectorService.LOGS_COLLECTION, logId, logVector, {
         text: text,
         userId: userId,
         timestamp: new Date().toISOString(),
         type: "daily_log"
       });
 
+      console.log(`[Worker] Extracting facts for Log ${logId}...`);
+      const facts = await aiService.extractFacts(text);
+
+      if (facts.length > 0) {
+        console.log(`[Worker] Found ${facts.length} facts:`, facts);
+      
+        for (const fact of facts) {
+            const factId = uuidv4();
+            const factVector = await aiService.generateEmbedding(fact);
+            
+            await vectorService.upsertPoint(vectorService.FACTS_COLLECTION, factId, factVector, {
+                text: fact, // the fact becomes the searchable text
+                sourceLogId: logId, 
+                userId: userId,
+                timestamp: new Date().toISOString(),
+                type: "fact"
+            });
+        }
+      } else {
+        console.log("[Worker] No facts extracted.");
+      }
+
+    
       await db
         .update(logEntry)
         .set({ status: "processed", updatedAt: new Date() })
         .where(eq(logEntry.id, logId));
 
-      console.log(`[Worker] Log ${logId} fully processed and indexed.`);
-      return { success: true, vectorSize: vector.length };
+      return { success: true, factsCount: facts.length };
 
     } catch (error: any) {
       console.error(`[Worker] Failed to process log ${logId}:`, error);
-      
-      await db
-        .update(logEntry)
-        .set({ status: "failed" })
-        .where(eq(logEntry.id, logId));
-      
+      await db.update(logEntry).set({ status: "failed" }).where(eq(logEntry.id, logId));
       throw error;
     }
   },

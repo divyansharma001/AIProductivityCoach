@@ -2,45 +2,49 @@ import { QdrantClient } from "@qdrant/js-client-rest";
 
 const client = new QdrantClient({ host: "localhost", port: 6333 });
 
-const COLLECTION_NAME = "productivity_logs";
-
 export const vectorService = {
   client,
-  COLLECTION_NAME,
+  LOGS_COLLECTION: "productivity_logs",
+  FACTS_COLLECTION: "user_facts",
 
   async initCollection() {
     try {
       const result = await client.getCollections();
-      const exists = result.collections.some((c) => c.name === COLLECTION_NAME);
+      const collections = result.collections.map((c) => c.name);
 
-      if (!exists) {
-        await client.createCollection(COLLECTION_NAME, {
-          vectors: {
-            size: 3072, 
-            distance: "Cosine",
-          },
+      if (!collections.includes(this.LOGS_COLLECTION)) {
+        await client.createCollection(this.LOGS_COLLECTION, {
+          vectors: { size: 3072, distance: "Cosine" },
         });
-        console.log(`Vector collection '${COLLECTION_NAME}' created.`);
-      } else {
-        console.log(`Vector collection '${COLLECTION_NAME}' already exists.`);
+        console.log(`Collection '${this.LOGS_COLLECTION}' created.`);
       }
+
+      if (!collections.includes(this.FACTS_COLLECTION)) {
+        await client.createCollection(this.FACTS_COLLECTION, {
+          vectors: { size: 3072, distance: "Cosine" },
+        });
+        console.log(`Collection '${this.FACTS_COLLECTION}' created.`);
+      }
+      
     } catch (error) {
-      console.error("Error initializing Qdrant collection:", error);
+      console.error("Error initializing Qdrant collections:", error);
     }
   },
-
   
-  async search(vector: number[], limit: number = 5) {
-    return client.search(COLLECTION_NAME, {
+ async search(collectionName: string, vector: number[], limit: number = 5, userId: string) {
+    return client.search(collectionName, {
       vector,
       limit,
+      filter: {
+        must: [{ key: "userId", match: { value: userId } }]
+      },
       with_payload: true,
     });
   },
 
 
-  async upsertPoint(id: string, vector: number[], payload: Record<string, any>) {
-    return client.upsert(COLLECTION_NAME, {
+async upsertPoint(collectionName: string, id: string, vector: number[], payload: Record<string, any>) {
+    return client.upsert(collectionName, {
       points: [
         {
           id,

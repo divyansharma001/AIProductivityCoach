@@ -10,6 +10,11 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const embeddingModel = genAI.getGenerativeModel({ model: "gemini-embedding-001" });
 const chatModel = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
+const factExtractionModel = genAI.getGenerativeModel({ 
+    model: "gemini-2.5-flash",
+    generationConfig: { responseMimeType: "application/json" }
+});
+
 export const aiService = {
   
    // Converts text into a vector array (3072 dimensions)
@@ -35,6 +40,27 @@ export const aiService = {
     } catch (error) {
       console.error("Error generating response:", error);
       throw error;
+    }
+  },
+
+   async extractFacts(text: string): Promise<string[]> {
+    const prompt = `
+    Analyze the following user log entry. 
+    Extract distinct, atomic facts about the user's habits, preferences, mental state, or health.
+    Ignore generic statements. Focus on cause-and-effect or recurring patterns.
+    
+    Log: "${text}"
+    
+    Output a JSON list of strings. Example: ["User feels tired after eating sugar", "User prefers working in the morning"]
+    `;
+
+    try {
+      const result = await factExtractionModel.generateContent(prompt);
+      const responseText = result.response.text();
+      return JSON.parse(responseText) as string[]; 
+    } catch (error) {
+      console.error("Error extraction facts:", error);
+      return []; 
     }
   }
 };
